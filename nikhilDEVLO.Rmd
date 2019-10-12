@@ -1,0 +1,35 @@
+---
+title: "Developing data products"
+author: "Nikhil Kumar Deshmukh"
+date: "10/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## My First Leaflet Map
+Create a leaflet map object.
+```{r cars}
+library(leaflet)
+map <- leaflet() %>% addTiles()
+```
+
+Create a marker with a picture of MAHE and a link to its homepage.
+```{r}
+manipaluniversityIcon <- makeIcon(
+   iconUrl = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.static-collegedunia.com%2Fpublic%2Fcollege_data%2Fimages%2FappImage%2F25617_MANIPAL.jpg&imgrefurl=https%3A%2F%2Fcollegedunia.com%2Funiversity%2F25617-manipal-university-mu-manipal&docid=OHG35hcIXzvGpM&tbnid=2CnPVTnrVpd5AM%3A&vet=10ahUKEwjvyLahyJblAhV363MBHVEwCq4QMwh7KAEwAQ..i&w=1024&h=630&bih=625&biw=1366&q=manipal&ved=0ahUKEwjvyLahyJblAhV363MBHVEwCq4QMwh7KAEwAQ&iact=mrc&uact=8",
+   iconWidth = 30*408/255, iconHeight = 30,
+   iconAnchorX = 30*408/255/2, iconAnchorY = 30/2
+)
+```
+
+Add the marker to the map and display the map.
+```{r}
+manipaluniversityePopup <- c("<a href= 'https://manipal.edu/mu.html' >MAHE<br><img src='https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.static-collegedunia.com%2Fpublic%2Fcollege_data%2Fimages%2FappImage%2F25617_MANIPAL.jpg&imgrefurl=https%3A%2F%2Fcollegedunia.com%2Funiversity%2F25617-manipal-university-mu-manipal&docid=OHG35hcIXzvGpM&tbnid=2CnPVTnrVpd5AM%3A&vet=10ahUKEwjvyLahyJblAhV363MBHVEwCq4QMwh7KAEwAQ..i&w=1024&h=630&bih=625&biw=1366&q=manipal&ved=0ahUKEwjvyLahyJblAhV363MBHVEwCq4QMwh7KAEwAQ&iact=mrc&uact=8' width='210' height='132'  alt='Foto Corps de Logis' title='Foto Corps de Logi'></a>")
+map %>%
+   addTiles() %>%
+   addMarkers(lat= 13.3490, lng=74.7856, popup = manipaluniversityePopup )
+```
